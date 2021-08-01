@@ -1,0 +1,56 @@
+body{
+    background: url(lib.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 5% 630%;
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+.navabt{
+    overflow: hidden;
+    background:brown;
+    height: 63px;
+    margin-top: -5px;
+}
+.navabt a{
+    float: right;
+    border-left: 1px solid dimgrey;
+    color:sandybrown;
+    text-align: center;
+    padding: 20px 16px;
+    font-size: 18px;
+    width: 150px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.conabt a{
+    float:left;
+    font-size: 20px;
+    
+}
+
+.navabt a:hover{
+   
+    color:rgb(211, 157, 39);
+}
+.tab{
+    margin-top: 350px;
+    margin-left: 350px;
+    font-size: 20px;
+    text-align:left;
+    font-weight: bold;
+   
+}
+.form {
+    margin-top: 200px;
+    margin-left: 760px ;
+    font-size: 25px;
+}
+.login{
+    margin-top: 1px;
+    margin-left: 360px ;
+
+}

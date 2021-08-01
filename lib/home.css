@@ -1,0 +1,82 @@
+body{
+
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+.navabt{
+    overflow: hidden;
+    background:brown;
+    height: 63px;
+    margin-top: -5px;
+}
+.navabt a{
+    float: right;
+    border-left: 1px solid dimgrey;
+    color:sandybrown;
+    text-align: center;
+    padding: 20px 16px;
+    font-size: 18px;
+    width: 150px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.conabt a{
+    float:left;
+    font-size: 20px;
+    
+}
+
+.navabt a:hover{
+   
+    color:rgb(211, 157, 39);
+}
+.tab{
+    margin-top: 350px;
+    margin-left: 350px;
+    font-size: 20px;
+    text-align:left;
+    font-weight: bold;
+   
+}
+#lib {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    margin: 8em auto;
+    font-size: 1.3rem;
+    color: #94aab0;
+    display: block;
+    text-decoration: none;
+  }
+  
+  a{
+      color: #94aab0;
+      text-decoration: none;
+  }
+  
+  #m{
+      display: inline-block;
+  }
+  
+  #verticalLine {
+      display: inline-block;
+      margin-left: 20px;
+      border-left: solid #343642;
+  }
+  
+  #l-link{
+      margin-left: 20px;
+  }
+  
+  #m, #l
+  {
+      transition: all .2s ease-in-out;
+  }
+  
+  #m:hover, #l:hover
+  {
+      transform: scale(1.1);
+  }
