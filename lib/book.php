@@ -27,7 +27,8 @@
             <th><a class="btn btn-secondary"style="width:150px; heigth:50px;">ACTION</th>
         </tr> 
         <?php 
-        $conn=mysqli_connect("localhost","id17336622_books","Snehaasnehaa123$","id17336622_library");
+       $conn=mysqli_connect("remotemysql.com","5XnFWGlHJx","J4BSTJHZaE","5XnFWGlHJx") or die("no connected");
+
         $sql = "SELECT * from books";
 $result= $conn-> query($sql);
 if ($result-> num_rows > 0)
