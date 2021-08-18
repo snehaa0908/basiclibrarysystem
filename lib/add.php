@@ -50,8 +50,8 @@
 </body>
 
 <?php 
-$connection=mysqli_connect("localhost","id17336622_books","Snehaasnehaa123$","id17336622_library") or die("no connected");
-mysqli_select_db($connection,"id17336622_library") or die("no database");
+$connection=mysqli_connect("remotemysql.com","5XnFWGlHJx","J4BSTJHZaE","5XnFWGlHJx") or die("no connected");
+mysqli_select_db($connection,"5XnFWGlHJx") or die("no database");
 if(isset($_POST['submit']))
 {
 	$bookid=$_POST['Id'];
