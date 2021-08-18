@@ -10,8 +10,7 @@
 </head>
 <body>
     <div class="navabt">
-    <a href="home.php"><i class="fas fa-power-off"></i>
-                    LOGOUT</a>   
+      
                 
         <div class="conabt"><a href='#'><i class="fas fa-book-reader"></i> LIBRARY</a></div>
 </div>
