@@ -28,7 +28,7 @@
         </tr> 
         <?php 
        $conn=mysqli_connect("remotemysql.com","5XnFWGlHJx","J4BSTJHZaE","5XnFWGlHJx") or die("no connected");
-
+mysqli_select_db($conn,"5XnFWGlHJx") or die("no database");
         $sql = "SELECT * from books";
 $result= $conn-> query($sql);
 if ($result-> num_rows > 0)
