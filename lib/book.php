@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Library</title>
+    <title>Books</title>
     <link rel="stylesheet" href="book.css">
     
     <script src="https://kit.fontawesome.com/abdab7f3b2.js" crossorigin="anonymous"></script>
@@ -27,6 +27,41 @@
             <th><a class="btn btn-secondary"style="width:150px; heigth:50px;">ACTION</th>
         </tr> 
         <?php 
+        ob_start();
+       $conn=mysqli_connect("remotemysql.com","5XnFWGlHJx","J4BSTJHZaE","5XnFWGlHJx") or die("no connected");
+
+        $sql = "SELECT * from books";
+$result= $conn-> query($sql);
+if ($result-> num_rows > 0)
+{
+    while($row =$result-> fetch_assoc()){
+        ?>
+        
+        <tr>  
+        <td><a class="btn btn-info"style="width:100px; heigth:50px;"><?php echo $row['Id']; ?> </td>
+            <td><a class="btn btn-info"style="width:200px; heigth:50px;"><?php echo $row['Title']; ?> </td>
+         
+            <td><a class="btn btn-info"style="width:200px; heigth:50px;">
+                <?php echo $row['Author']; ?></td>
+            
+            <td><a class="btn btn-info"style="width:150px; heigth:50px;"><?php echo $row['Category']; ?> </td>
+            <td><a class="btn btn-info"style="width:150px; heigth:50px;">
+                <?php echo $row['action']; ?> </td>
+            
+            <td><a class="btn btn-danger"style="width:150px; heigth:50px;" href="book.php?Id=<?php echo $row['Id'] ?>">BORROW</button></a></td>
+        </tr>
+    
+    <?php
+}
+echo "</table>";
+}
+else{
+    echo "NO RESULT";
+}
+?>  
+
+</table>
+<?php 
 session_start();
 $clue=$_SESSION['email'];
 if(isset($_GET['Id'])){
@@ -64,4 +99,5 @@ if(isset($_GET['Id'])){
 </body>
 </html>
 
-
+</body>
+</html>
