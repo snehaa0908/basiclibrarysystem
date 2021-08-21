@@ -27,66 +27,42 @@
             <th><a class="btn btn-secondary"style="width:150px; heigth:50px;">ACTION</th>
         </tr> 
         <?php 
- $connection=mysqli_connect("remotemysql.com","5XnFWGlHJx","J4BSTJHZaE","5XnFWGlHJx") or die("no connected");
-mysqli_select_db($connection,"5XnFWGlHJx") or die("no database");
-		session_start();
-		$clue=$_SESSION['email'];
-		if($connection-> connect_error){
-			die("connection failed:". $connection-> connect_error);
-		}
-		$sql = "SELECT id,name,author,category,duedate from bag WHERE email='$clue'";
-		$result= $connection-> query($sql);
-		$i=1;
-		$f=0;
-		if($result-> num_rows > 0){
-			while($row = $result-> fetch_assoc()){
-				?>
-				<tr>
-					
-					<td><a class="btn btn-info"style="width:100px; heigth:50px;"><b><?php echo $row['id']; ?> </b></td>
-					<td><a class="btn btn-info"style="width:300px; heigth:50px;"><b><?php echo $row['name']; ?> </b></td>
-					<td><a class="btn btn-info"style="width:300px; heigth:50px;"><b><?php echo $row['author']; ?> </b></td>
-					<td><a class="btn btn-info"style="width:200px; heigth:50px;"><b><?php echo $row['category']; ?> </b></td>
-                    <td><a class="btn btn-info"style="width:200px; heigth:50px;"><b><?php echo $row['duedate']; ?> </b></td>
-					<td><b><a class="btn btn-danger"style="width:150px; heigth:50px;" href="bag.php?name=<?php echo $row['name'] ?>"> RETURN BOOK </a></b></td>
-				</tr>
-			<?php
-			$i++;
-			}
-			echo "</table>";
-		}
-		else{
-			$f=1;
-		}
-		if(isset($_GET['name'])){
-			$name=$_GET['name'];
-			$sql = "SELECT id,name,author,category from bag WHERE email='$clue'";
-			$result= $connection-> query($sql);
-			$row = $result-> fetch_assoc();
-			$id=$row['id'];
-			$name1=$row['name'];
-			$author=$row['author'];
-            $category=$row['category'];
-			$status="Available";
-			$b="INSERT INTO books(Id,Title,Author,Category,action) VALUES ('$id','$name1','$author','$category','$status')";
-			$query=mysqli_query($connection,$b);
-			$del="DELETE FROM bag WHERE email='$clue'";
-			$query=mysqli_query($connection,$del);
-			if($query){
-				echo '<script>alert("Book is returned Successfully!!!")</script>';
-				header("Refresh:0;url=bag.php");
-
+session_start();
+$clue=$_SESSION['email'];
+if(isset($_GET['Id'])){
+	$id=$_GET['Id'];
+	$a="SELECT * FROM bag";
+	$r=$conn->query($a);
+	if($r-> num_rows > 0){
+		while($ro = $r-> fetch_assoc()){
+			if($ro['email']==$clue){
+				echo '<script>alert("Sorry!! you can borrow only one book")</script>';
+				exit();
 			}
 		}
-		?>
-	</table>
-	<br><br>
-	<?php 
-	if($f==1){
-		echo "Bag is empty";
 	}
-	?>
-</div>
-</table>
+	$borrowed_book="SELECT * FROM books WHERE $id=Id";
+	$result=$conn->query($borrowed_book);
+	$row=$result->fetch_assoc();
+	date_default_timezone_set("Asia/kolkata");
+	$date=date("Y-m-d");
+	$date=date('Y-m-d', strtotime($date. '+15 days'));
+	$name=$row['Title'];
+	$author=$row['Author'];
+    $category=$row['Category'];
+	$mycollection="INSERT INTO bag(id,name,author,category,duedate,email) VALUES ('$id','$name','$author','$category','$date','$clue')";
+	$query1=mysqli_query($conn,$mycollection);
+	$del="DELETE FROM books WHERE $id=Id";
+	$query=mysqli_query($conn,$del);
+	if($query1){
+		echo '<script>alert("The book is added to your Bag")</script>';
+		header("Refresh:0;url=bag.php");
+
+	}
+}
+?>
 </body>
-</html> 
+</html>
+
+</body>
+</html>
