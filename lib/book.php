@@ -64,5 +64,4 @@ if(isset($_GET['Id'])){
 </body>
 </html>
 
-</body>
-</html>
+
